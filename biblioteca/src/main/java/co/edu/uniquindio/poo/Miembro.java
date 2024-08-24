@@ -14,6 +14,28 @@ public class Miembro {
         this.prestamosActivos=new ArrayList<>();
     }
 
+
+    public String getNombre() {
+        return nombre;
+    }
+
+
+    public int getIdMiembro() {
+        return idMiembro;
+    }
+
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
+    public void setIdMiembro(int idMiembro) {
+        this.idMiembro = idMiembro;
+    }
+
+    
+
     
     
 }
