@@ -1,34 +1,36 @@
 package co.edu.uniquindio.poo;
-import
+
+import java.util.Date;
 
 public class Prestamo {
-    private libro Libro;
-    private miembro Miembro;
+    private Libro libro;
+    private Miembro miembro;
     private Date fechaPrestamo;
     private Date fechaDevolucion;
 
-    public Prestamo(libro libro, miembro miembro, Date fechaPrestamo, Date fechaDevolucion) {
-        Libro = libro;
-        Miembro = miembro;
+
+    public Prestamo(Libro libro, Miembro miembro, Date fechaPrestamo, Date fechaDevolucion) {
+        this.libro = libro;
+        this.miembro = miembro;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
     }
-}
 
-    public libro getLibro() {
-        return Libro;
+
+    public Libro getLibro() {
+        return libro;
     }
 
-    public void setLibro(libro libro) {
-        Libro = libro;
+    public void setLibro(Libro libro) {
+        this.libro = libro;
     }
 
-    public miembro getMiembro() {
-        return Miembro;
+    public Miembro getMiembro() {
+        return miembro;
     }
 
-    public void setMiembro(miembro miembro) {
-        Miembro = miembro;
+    public void setMiembro(Miembro miembro) {
+        this.miembro = miembro;
     }
 
     public Date getFechaPrestamo() {
@@ -46,7 +48,7 @@ public class Prestamo {
     public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
-
+}
 
 
 
