@@ -10,9 +10,26 @@ public class Libro {
         this.titulo=titulo;
         this.autor=autor;
         this.isbn=isbn;
-        this.estado=estado;
+        this.estado="disponible";
 
 
+    }
+    public void prestar() {
+        if ("disponible".equals(estado)) {
+            estado = "prestado";
+            System.out.println("El libro \"" + titulo + "\" ha sido prestado.");
+        } else {
+            System.out.println("El libro \"" + titulo + "\" ya está prestado.");
+        }
+    }
+
+    public void devolver() {
+        if ("prestado".equals(estado)) {
+            estado = "disponible";
+            System.out.println("El libro \"" + titulo + "\" ha sido devuelto.");
+        } else {
+            System.out.println("El libro \"" + titulo + "\" ya está disponible.");
+        }
     }
 
     public String getTitulo() {
