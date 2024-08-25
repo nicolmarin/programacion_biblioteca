@@ -11,7 +11,6 @@ public class App {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // Crear algunos libros y miembros para iniciar el sistema
         inicializarDatos();
 
         boolean salir = false;
@@ -26,7 +25,7 @@ public class App {
             System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer de entrada
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -56,14 +55,12 @@ public class App {
     }
 
     private static void inicializarDatos() {
-        // Agregar algunos libros
         Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri", 4589);
         Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", 89021);
 
         listaLibros.add(libro1);
         listaLibros.add(libro2);
 
-        // Agregar algunos miembros
         Miembro miembro1 = new Miembro("Duvan Felipe", 1077722942);
         Miembro miembro2 = new Miembro("Nicol Marin", 1234567);
         Miembro miembro3 = new Miembro("Majo Tovar", 2345890);
