@@ -11,8 +11,8 @@ public class Miembro {
     public Miembro(String nombre, int idMiembro) {
         this.nombre = nombre;
         this.idMiembro = idMiembro;
-        this.prestamosActivos=new ArrayList<>();
-        
+        this.prestamoActivos=new ArrayList<>();
+
     }
     public void agregarPrestamos(Prestamo prestamo){
         prestamoActivos.add(prestamo);
@@ -26,6 +26,7 @@ public class Miembro {
         return prestamoActivos;
 
     }
+    
 
     public String getNombre() {
         return nombre;
