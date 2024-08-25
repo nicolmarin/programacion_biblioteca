@@ -1,12 +1,9 @@
 package co.edu.uniquindio.poo;
 
-<<<<<<< HEAD
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
-=======
-import java.time.LocalDate;
->>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
 
 public class Prestamo {
     private Libro libro;
@@ -14,26 +11,18 @@ public class Prestamo {
     private LocalDate fechaPrestamo;
     private LocalDate fechaDevolucion;
 
-<<<<<<< HEAD
-    public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
-=======
-    public Prestamo(Libro libro, Miembro miembro, LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
->>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
+    // Constructor que inicializa el préstamo con libro, miembro, fecha de préstamo y fecha de devolución
+    public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDate fechaDevolucion) {
         this.libro = libro;
         this.miembro = miembro;
-        this.fechaPrestamo = fechaPrestamo;
+        this.fechaPrestamo = fechaPrestamo.toLocalDate(); // Convertir a LocalDate
         this.fechaDevolucion = fechaDevolucion;
-<<<<<<< HEAD
-        this.libro.prestar();
-        this.miembro.agregarPrestamos(this);
-    }
-=======
-        
-    }
-    
-    
->>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
 
+        libro.setEstado("prestado"); // Marcar el libro como prestado
+        miembro.agregarPrestamos(this); // Agregar préstamo al miembro
+    }
+
+    // Método para mostrar los préstamos activos de un miembro
     public static void mostrarPrestamosActivos(Scanner scanner, List<Miembro> listaMiembros) {
         System.out.println("\n--- Mostrar Préstamos Activos ---");
         System.out.print("Ingrese el ID del miembro: ");
@@ -44,13 +33,16 @@ public class Prestamo {
 
         if (miembro != null) {
             for (Prestamo prestamo : miembro.getPrestamosActivos()) {
-                System.out.println("Libro: " + prestamo.getLibro().getTitulo() + " - Fecha de Préstamo: " + prestamo.getFechaPrestamo());
+                System.out.println("Libro: " + prestamo.getLibro().getTitulo() + 
+                                   " - Fecha de Préstamo: " + prestamo.getFechaPrestamo() +
+                                   " - Fecha de Devolución: " + prestamo.getFechaDevolucion());
             }
         } else {
             System.out.println("Miembro no encontrado.");
         }
     }
 
+    // Getters y setters
     public Libro getLibro() {
         return libro;
     }

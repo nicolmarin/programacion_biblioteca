@@ -11,7 +11,9 @@ public class App {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-<<<<<<< HEAD
+        // Crear algunos libros y miembros para iniciar el sistema
+        inicializarDatos();
+
         boolean salir = false;
 
         while (!salir) {
@@ -51,21 +53,24 @@ public class App {
                     break;
             }
         }
-=======
+    }
+
+    private static void inicializarDatos() {
+        // Agregar algunos libros
+        Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri", 4589);
+        Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", 89021);
+
+        listaLibros.add(libro1);
+        listaLibros.add(libro2);
+
+        // Agregar algunos miembros
+        Miembro miembro1 = new Miembro("Duvan Felipe", 1077722942);
+        Miembro miembro2 = new Miembro("Nicol Marin", 1234567);
+        Miembro miembro3 = new Miembro("Majo Tovar", 2345890);
         
-        Libro libro1 = new Libro("la divina comedia", "dante", 4589);
-        Libro libro2 = new Libro("boulevard", "flor m salvador", 89021);
 
-        Miembro miembro1 =new Miembro("nicol marin", 1234567);
-        Miembro miembro2 =new Miembro("majo tovar", 2345890);
-
-        Bibliotecario bibliotecario= new Bibliotecario("fernando perez", 18902345);
-
-        bibliotecario.gestionarPrestamos(libro1,miembro1);
-        bibliotecario.gestionarPrestamos(libro2, miembro2);
-        
-
-
->>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
+        listaMiembros.add(miembro1);
+        listaMiembros.add(miembro2);
+        listaMiembros.add(miembro3);
     }
 }

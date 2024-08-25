@@ -12,19 +12,15 @@ public class Miembro {
     public Miembro(String nombre, int idMiembro) {
         this.nombre = nombre;
         this.idMiembro = idMiembro;
-<<<<<<< HEAD
-        this.prestamosActivos = new ArrayList<>();
-=======
-        this.prestamoActivos=new ArrayList<>();
-
+        this.prestamosActivos = new ArrayList<>(); 
     }
-    public void agregarPrestamos(Prestamo prestamo){
-        prestamoActivos.add(prestamo);
 
+    public void agregarPrestamos(Prestamo prestamo) {
+        prestamosActivos.add(prestamo);
     }
-    public void removerPrestamo(Prestamo prestamo){
-        prestamoActivos.remove(prestamo);
->>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
+
+    public void removerPrestamo(Prestamo prestamo) {
+        prestamosActivos.remove(prestamo);
     }
 
     public static void agregarMiembro(Scanner scanner, List<Miembro> listaMiembros) {
@@ -46,17 +42,8 @@ public class Miembro {
                 return miembro;
             }
         }
-        return null;
+        return null; // Retorna null si no se encuentra el miembro
     }
-
-    public void agregarPrestamos(Prestamo prestamo) {
-        prestamosActivos.add(prestamo);
-    }
-
-    public void removerPrestamo(Prestamo prestamo) {
-        prestamosActivos.remove(prestamo);
-    }
-    
 
     public String getNombre() {
         return nombre;
