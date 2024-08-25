@@ -12,6 +12,7 @@ public class Miembro {
         this.nombre = nombre;
         this.idMiembro = idMiembro;
         this.prestamosActivos=new ArrayList<>();
+        
     }
     public void agregarPrestamos(Prestamo prestamo){
         prestamoActivos.add(prestamo);

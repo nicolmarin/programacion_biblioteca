@@ -27,7 +27,7 @@ public class Prestamo {
     }
 
     public void setLibro(Libro libro) {
-        libro = Libro;
+        libro = libro;
     }
 
     public Miembro getMiembro() {
