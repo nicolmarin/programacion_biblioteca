@@ -1,25 +1,22 @@
 package co.edu.uniquindio.poo;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Prestamo {
     private Libro libro;
     private Miembro miembro;
-    private LocalDateTime fechaPrestamo;
-    private LocalDateTime fechaDevolucion;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaDevolucion;
 
-    public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
+    public Prestamo(Libro libro, Miembro miembro, LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
         this.libro = libro;
         this.miembro = miembro;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
-        this.libro.prestar();
-        this.miembro.agregarPrestamos(this);
+        
     }
-    public void devolverLibro(){
-        this.libro.devolver();
-        this.miembro.removerPrestamo(this);
-    }
+    
+    
 
 
     public Libro getLibro() {
@@ -38,19 +35,19 @@ public class Prestamo {
         this.miembro = miembro;
     }
 
-    public LocalDateTime getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(LocalDateTime fechaPrestamo) {
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public LocalDateTime getFechaDevolucion() {
+    public LocalDate getFechaDevolucion() {
         return fechaDevolucion;
     }
 
-    public void setFechaDevolucion(LocalDateTime fechaDevolucion) {
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 }
