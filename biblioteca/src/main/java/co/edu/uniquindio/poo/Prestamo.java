@@ -9,8 +9,8 @@ public class Prestamo {
     private LocalDateTime fechaDevolucion;
 
     public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
-        libro = libro;
-        miembro = miembro;
+        this.libro = libro;
+        this.miembro = miembro;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
         this.libro.prestar();
@@ -27,7 +27,7 @@ public class Prestamo {
     }
 
     public void setLibro(Libro libro) {
-        libro = libro;
+        this.libro = libro;
     }
 
     public Miembro getMiembro() {
@@ -35,7 +35,7 @@ public class Prestamo {
     }
 
     public void setMiembro(Miembro miembro) {
-        miembro = miembro;
+        this.miembro = miembro;
     }
 
     public LocalDateTime getFechaPrestamo() {
