@@ -1,44 +1,34 @@
 package co.edu.uniquindio.poo;
 
-public class Libro {
-    private String titulo;
+public class Libro extends ItemBiblioteca {
     private String autor;
     private int isbn;
-    private String estado;
+    private boolean disponible;
 
-    public Libro(String titulo,String autor,int isbn,String estado){
-        this.titulo=titulo;
+    public Libro(String titulo,String autor,int isbn){
+        super(titulo);
+        
         this.autor=autor;
         this.isbn=isbn;
-        this.estado="disponible";
+        this.disponible=true;
 
 
     }
-    public void prestar() {
-        if ("disponible".equals(estado)) {
-            estado = "prestado";
-            System.out.println("El libro \"" + titulo + "\" ha sido prestado.");
-        } else {
-            System.out.println("El libro \"" + titulo + "\" ya está prestado.");
-        }
+    @Override
+    public void mostrarDetalles() {
+        System.out.println("Libro: " + getTitulo() + ", Autor: " + autor + ", ISBN: " + isbn);
     }
+    public void setDisponible(boolean disponible){
+        this.disponible=disponible;
 
-    public void devolver() {
-        if ("prestado".equals(estado)) {
-            estado = "disponible";
-            System.out.println("El libro \"" + titulo + "\" ha sido devuelto.");
-        } else {
-            System.out.println("El libro \"" + titulo + "\" ya está disponible.");
-        }
     }
+    public boolean isDisponible() {
+        
+        return disponible;
+    }
+    
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+    
 
     public String getAutor() {
         return autor;
@@ -56,12 +46,6 @@ public class Libro {
         this.isbn = isbn;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+    
     
 }

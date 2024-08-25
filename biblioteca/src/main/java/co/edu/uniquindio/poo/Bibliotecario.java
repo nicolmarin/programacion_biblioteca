@@ -13,7 +13,7 @@ class Bibliotecario extends Empleado implements IGestionInventario {
             Prestamo prestamo = new Prestamo(libro, miembro, LocalDate.now(), LocalDate.now().plusWeeks(2));
             miembro.agregarPrestamos(prestamo);
             libro.setDisponible(false);
-            System.out.println("prestamos realizado"+libro.getTitulo+"a"+ getNombre());
+            System.out.println("prestamos realizado"+libro.getTitulo()+"a"+ getNombre());
 
 
             
@@ -21,10 +21,13 @@ class Bibliotecario extends Empleado implements IGestionInventario {
             System.out.println("su prestamo no fue realizado ");
             
         }
-
-    
-
+        
     }
+    @Override
+    public void gestionarItem(){
+        System.out.println("sus items se estan agregando al invenario");
+    }
+
 
 
 
