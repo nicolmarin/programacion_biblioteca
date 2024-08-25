@@ -1,15 +1,20 @@
 package co.edu.uniquindio.poo;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
 public class Libro {
     private String titulo;
+=======
+public class Libro extends ItemBiblioteca {
+>>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
     private String autor;
     private int isbn;
-    private String estado;
+    private boolean disponible;
 
+<<<<<<< HEAD
     public Libro(String titulo, String autor, int isbn, String estado) {
         this.titulo = titulo;
         this.autor = autor;
@@ -97,24 +102,32 @@ public class Libro {
         } else {
             System.out.println("El libro \"" + titulo + "\" ya está prestado.");
         }
-    }
+=======
+    public Libro(String titulo,String autor,int isbn){
+        super(titulo);
+        
+        this.autor=autor;
+        this.isbn=isbn;
+        this.disponible=true;
 
-    public void devolver() {
-        if ("prestado".equals(estado)) {
-            estado = "disponible";
-            System.out.println("El libro \"" + titulo + "\" ha sido devuelto.");
-        } else {
-            System.out.println("El libro \"" + titulo + "\" ya está disponible.");
-        }
-    }
 
-    public String getTitulo() {
-        return titulo;
     }
+    @Override
+    public void mostrarDetalles() {
+        System.out.println("Libro: " + getTitulo() + ", Autor: " + autor + ", ISBN: " + isbn);
+>>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
+    }
+    public void setDisponible(boolean disponible){
+        this.disponible=disponible;
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
+    public boolean isDisponible() {
+        
+        return disponible;
+    }
+    
+
+    
 
     public String getAutor() {
         return autor;
@@ -132,6 +145,7 @@ public class Libro {
         this.isbn = isbn;
     }
 
+<<<<<<< HEAD
     public String getEstado() {
         return estado;
     }
@@ -139,5 +153,9 @@ public class Libro {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+=======
+    
+    
+>>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
 }
 

@@ -1,23 +1,38 @@
 package co.edu.uniquindio.poo;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
+=======
+import java.time.LocalDate;
+>>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
 
 public class Prestamo {
     private Libro libro;
     private Miembro miembro;
-    private LocalDateTime fechaPrestamo;
-    private LocalDateTime fechaDevolucion;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaDevolucion;
 
+<<<<<<< HEAD
     public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
+=======
+    public Prestamo(Libro libro, Miembro miembro, LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
+>>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
         this.libro = libro;
         this.miembro = miembro;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
+<<<<<<< HEAD
         this.libro.prestar();
         this.miembro.agregarPrestamos(this);
     }
+=======
+        
+    }
+    
+    
+>>>>>>> bd69c696bf2ec3ca78af32a505a960c87377927d
 
     public static void mostrarPrestamosActivos(Scanner scanner, List<Miembro> listaMiembros) {
         System.out.println("\n--- Mostrar Préstamos Activos ---");
@@ -52,19 +67,19 @@ public class Prestamo {
         this.miembro = miembro;
     }
 
-    public LocalDateTime getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(LocalDateTime fechaPrestamo) {
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public LocalDateTime getFechaDevolucion() {
+    public LocalDate getFechaDevolucion() {
         return fechaDevolucion;
     }
 
-    public void setFechaDevolucion(LocalDateTime fechaDevolucion) {
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 }

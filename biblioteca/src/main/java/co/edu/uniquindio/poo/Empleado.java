@@ -1,6 +1,5 @@
 package co.edu.uniquindio.poo;
 
-
 public abstract class Empleado  {
     private String nombre;
     private int idEmpleado;
