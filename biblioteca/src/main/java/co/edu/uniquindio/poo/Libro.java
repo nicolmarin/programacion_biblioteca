@@ -91,9 +91,71 @@ public class Libro extends ItemBiblioteca {
         }
     }
 
+    public static Libro buscarLibroPorTitulo(String titulo, List<Libro> listaLibros) {
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                return libro;
+            }
+        }
+        return null; // Retorna null si el libro no se encuentra
+    }
+
+    public static void verificarDisponibilidadLibro(Scanner scanner, List<Libro> listaLibros) {
+        System.out.println("\n--- Verificar Disponibilidad de Libro ---");
+        System.out.print("Ingrese el ISBN del libro: ");
+        int isbn = scanner.nextInt();
+        scanner.nextLine(); // Limpiar el buffer de entrada
+    
+        Libro libro = Libro.buscarLibroPorIsbn(isbn, listaLibros);
+    
+        if (libro != null) {
+            if (libro.estaDisponible()) {
+                System.out.println("El libro \"" + libro.getTitulo() + "\" está disponible.");
+            } else {
+                System.out.println("El libro \"" + libro.getTitulo() + "\" está prestado.");
+            }
+        } else {
+            System.out.println("Libro no encontrado.");
+        }
+    }
+
+    public static void buscarLibroPorIsbn(Scanner scanner, List<Libro> listaLibros) {
+        System.out.println("\n--- Buscar Libro por ISBN ---");
+        System.out.print("Ingrese el ISBN del libro: ");
+        int isbn = scanner.nextInt();
+        scanner.nextLine(); // Limpiar el buffer de entrada
+    
+        Libro libro = Libro.buscarLibroPorIsbn(isbn, listaLibros);
+    
+        if (libro != null) {
+            libro.mostrarDetalles();
+        } else {
+            System.out.println("Libro no encontrado.");
+        }
+    }
+
+    public static void buscarLibroPorTitulo(Scanner scanner, List<Libro> listaLibros) {
+        System.out.println("\n--- Buscar Libro por Título ---");
+        System.out.print("Ingrese el título del libro: ");
+        String titulo = scanner.nextLine();
+    
+        Libro libro = Libro.buscarLibroPorTitulo(titulo, listaLibros);
+    
+        if (libro != null) {
+            libro.mostrarDetalles();
+        } else {
+            System.out.println("Libro no encontrado.");
+        }
+    }
+
     @Override
     public void mostrarDetalles() {
         System.out.println("Libro: " + getTitulo() + ", Autor: " + autor + ", ISBN: " + isbn + ", Estado: " + estado);
+    }
+     // Implementación del método abstracto para verificar disponibilidad
+    
+    public boolean estaDisponible() {
+        return "disponible".equals(estado);
     }
 
     // Métodos getters y setters
@@ -112,6 +174,7 @@ public class Libro extends ItemBiblioteca {
     public int getIsbn() {
         return isbn;
     }
+   
 }
 
 

@@ -23,7 +23,10 @@ public class App {
             System.out.println("3. Realizar Préstamo");
             System.out.println("4. Devolver Libro");
             System.out.println("5. Mostrar Préstamos Activos");
-            System.out.println("6. Salir");
+            System.out.println("6. Verificar disponibilidad de libro ");
+            System.out.println("7. Buscar libro por isbn ");
+            System.out.println("8. Buscar libro por titulo ");
+            System.out.println("9. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine();
@@ -45,6 +48,15 @@ public class App {
                     Prestamo.mostrarPrestamosActivos(scanner, listaMiembros);
                     break;
                 case 6:
+                    Libro.verificarDisponibilidadLibro(scanner, listaLibros);
+                    break;
+                case 7:
+                    Libro.buscarLibroPorIsbn(scanner, listaLibros);
+                    break;
+                case 8:
+                    Libro.buscarLibroPorTitulo(scanner, listaLibros);
+                    break;
+                case 9:
                     salir = true;
                     System.out.println("Saliendo del sistema...");
                     break;
@@ -55,7 +67,7 @@ public class App {
         }
     }
 
-    private static void inicializarDatos() {
+    public static void inicializarDatos() {
 
         Bibliotecario bibliotecario = new Bibliotecario("Pepito El letras", 18902345);
 
@@ -90,9 +102,6 @@ public class App {
         listaMiembros.add(miembro1);
         listaMiembros.add(miembro2);
         listaMiembros.add(miembro3);
+    }     
 
-
-
-
-    }
 }

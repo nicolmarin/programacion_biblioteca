@@ -12,6 +12,8 @@ abstract class ItemBiblioteca {
     }
 
     public abstract void mostrarDetalles();
+
+    
 }
 
 
