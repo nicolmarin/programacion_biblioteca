@@ -66,7 +66,7 @@ public class Libro extends ItemBiblioteca {
         }
 
         if ("disponible".equals(libro.getEstado())) {
-            Prestamo prestamo = new Prestamo(libro, miembro, LocalDateTime.now(), null);
+            Prestamo prestamo = new Prestamo(libro, miembro, LocalDateTime.now(),LocalDateTime.now().plusDays(20));
             miembro.agregarPrestamos(prestamo);
             libro.setEstado("prestado"); 
             System.out.println("Préstamo realizado exitosamente: " + libro.getTitulo());

@@ -12,11 +12,11 @@ public class Prestamo {
     private LocalDate fechaDevolucion;
 
     // Constructor que inicializa el préstamo con libro, miembro, fecha de préstamo y fecha de devolución
-    public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDate fechaDevolucion) {
+    public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         this.libro = libro;
         this.miembro = miembro;
         this.fechaPrestamo = fechaPrestamo.toLocalDate(); // Convertir a LocalDate
-        this.fechaDevolucion = fechaDevolucion;
+        this.fechaDevolucion = fechaDevolucion.toLocalDate();
 
         libro.setEstado("prestado"); // Marcar el libro como prestado
         miembro.agregarPrestamos(this); // Agregar préstamo al miembro
