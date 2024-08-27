@@ -17,18 +17,22 @@ public class App {
         boolean salir = false;
 
         while (!salir) {
-            System.out.println("\n--- Sistema de Gestión de Biblioteca ---");
-            System.out.println("1. Agregar Miembro");
-            System.out.println("2. Agregar Libro");
-            System.out.println("3. Realizar Préstamo");
-            System.out.println("4. Devolver Libro");
-            System.out.println("5. Mostrar Préstamos Activos");
-            System.out.println("6. Mostrar Historial de Préstamos");
-            System.out.println("7. Verificar disponibilidad de libro ");
-            System.out.println("8. Buscar libro por ISBN ");
-            System.out.println("9. Buscar libro por título ");
-            System.out.println("10. Salir");
+            System.out.println("╔═════════════════════════════════════════");
+            System.out.println("║       📚 Menú Sistema de Biblioteca 📚   ");
+            System.out.println("╠═════════════════════════════════════════");
+            System.out.println("║ \u001B[35m1.\u001B[0m Agregar Miembro                ");
+            System.out.println("║ \u001B[35m2.\u001B[0m Agregar Libro                  ");
+            System.out.println("║ \u001B[35m3.\u001B[0m Realizar Préstamo              ");
+            System.out.println("║ \u001B[35m4.\u001B[0m Devolver Libro                ");
+            System.out.println("║ \u001B[35m5.\u001B[0m Mostrar Préstamos Activos      ");
+            System.out.println("║ \u001B[35m6.\u001B[0m Mostrar Historial de Préstamos ");
+            System.out.println("║ \u001B[35m7.\u001B[0m Verificar disponibilidad de libro ");
+            System.out.println("║ \u001B[35m8.\u001B[0m Buscar libro por ISBN           ");
+            System.out.println("║ \u001B[35m9.\u001B[0m Buscar libro por título         ");
+            System.out.println("║ \u001B[35m10.\u001B[0m Salir                          ");
+            System.out.println("╚══════════════════════════════════════════");
             System.out.print("Seleccione una opción: ");
+
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
