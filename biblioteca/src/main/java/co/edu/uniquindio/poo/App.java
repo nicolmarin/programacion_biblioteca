@@ -6,14 +6,14 @@ import java.util.Scanner;
 
 public class App {
 
-    private static List<Miembro> listaMiembros = new ArrayList<>();
-    private static List<Libro> listaLibros = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
+    private final static List<Miembro> listaMiembros = new ArrayList<>();
+    private final static List<Libro> listaLibros = new ArrayList<>();
+    private final static List<Prestamo> listaPrestamos = new ArrayList<>();
+    private final static Scanner scanner = new Scanner(System.in);
     private static Bibliotecario bibliotecario;
 
     public static void main(String[] args) {
         inicializarDatos();
-
         boolean salir = false;
 
         while (!salir) {
@@ -23,10 +23,11 @@ public class App {
             System.out.println("3. Realizar Préstamo");
             System.out.println("4. Devolver Libro");
             System.out.println("5. Mostrar Préstamos Activos");
-            System.out.println("6. Verificar disponibilidad de libro ");
-            System.out.println("7. Buscar libro por isbn ");
-            System.out.println("8. Buscar libro por titulo ");
-            System.out.println("9. Salir");
+            System.out.println("6. Mostrar Historial de Préstamos");
+            System.out.println("7. Verificar disponibilidad de libro ");
+            System.out.println("8. Buscar libro por ISBN ");
+            System.out.println("9. Buscar libro por título ");
+            System.out.println("10. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine();
@@ -39,24 +40,27 @@ public class App {
                     Libro.agregarLibro(scanner, listaLibros);
                     break;
                 case 3:
-                    Libro.prestarLibro(scanner, listaMiembros, listaLibros);
+                    Libro.prestarLibro(scanner, listaMiembros, listaLibros, listaPrestamos);
                     break;
                 case 4:
-                    Libro.devolverLibro(scanner, listaLibros);
+                    Libro.devolverLibro(scanner, listaLibros, listaPrestamos);
                     break;
                 case 5:
                     Prestamo.mostrarPrestamosActivos(scanner, listaMiembros);
                     break;
                 case 6:
-                    Libro.verificarDisponibilidadLibro(scanner, listaLibros);
+                    Prestamo.mostrarHistorialPrestamos(scanner, listaMiembros);
                     break;
                 case 7:
-                    Libro.buscarLibroPorIsbn(scanner, listaLibros);
+                    Libro.verificarDisponibilidadLibro(scanner, listaLibros);
                     break;
                 case 8:
-                    Libro.buscarLibroPorTitulo(scanner, listaLibros);
+                    Libro.buscarLibroPorIsbn(scanner, listaLibros);
                     break;
                 case 9:
+                    Libro.buscarLibroPorTitulo(scanner, listaLibros);
+                    break;
+                case 10:
                     salir = true;
                     System.out.println("Saliendo del sistema...");
                     break;
@@ -68,8 +72,7 @@ public class App {
     }
 
     public static void inicializarDatos() {
-
-        Bibliotecario bibliotecario = new Bibliotecario("Pepito El letras", 18902345);
+        bibliotecario = new Bibliotecario("Pepito El letras", 18902345);
 
         Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri", 4589);
         Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", 89021);
@@ -82,7 +85,7 @@ public class App {
         Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", 66554);
         Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges", 54321);
 
-        //Lista de Libros
+        // Lista de Libros
         listaLibros.add(libro1);
         listaLibros.add(libro2);
         listaLibros.add(libro3);
@@ -94,14 +97,13 @@ public class App {
         listaLibros.add(libro9);
         listaLibros.add(libro10);
 
-        Miembro miembro1 = new Miembro("Duvan Felipe", 1077722942);
-        Miembro miembro2 = new Miembro("Nicol Marin", 1234567);
-        Miembro miembro3 = new Miembro("Majo Tovar", 2345890);
+        Miembro miembro1 = new Miembro("Duvan Felipe", 1);
+        Miembro miembro2 = new Miembro("Nicol Marin", 2);
+        Miembro miembro3 = new Miembro("Majo Tovar", 3);
 
-        //Listado de Miembros
+        // Listado de Miembros
         listaMiembros.add(miembro1);
         listaMiembros.add(miembro2);
         listaMiembros.add(miembro3);
-    }     
-
+    }
 }

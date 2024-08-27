@@ -1,32 +1,61 @@
 package co.edu.uniquindio.poo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
 public class Prestamo {
     private Libro libro;
     private Miembro miembro;
-    private LocalDate fechaPrestamo;
-    public LocalDate fechaDevolucion;
-    public List<Prestamo> prestamos;
+    private LocalDateTime fechaPrestamo;
+    private LocalDateTime fechaDevolucion;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-
-
-
-    // Constructor que inicializa el préstamo con libro, miembro, fecha de préstamo y fecha de devolución
     public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {
         this.libro = libro;
         this.miembro = miembro;
-        this.fechaPrestamo = fechaPrestamo.toLocalDate(); // Convertir a LocalDate
-        this.fechaDevolucion = fechaDevolucion.toLocalDate();
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
 
-        libro.setEstado("prestado"); // Marcar el libro como prestado
-        miembro.agregarPrestamos(this); // Agregar préstamo al miembro
+        libro.setEstado("prestado");
+        miembro.agregarPrestamos(this);
     }
 
-    // Método para mostrar los préstamos activos de un miembro
+    public void marcarComoDevuelto() {
+        this.fechaDevolucion = LocalDateTime.now();
+        libro.setEstado("disponible");
+    }
+
+    public static void mostrarHistorialPrestamos(Scanner scanner, List<Miembro> listaMiembros) {
+        System.out.print("Ingrese el ID del miembro para ver el historial de préstamos: ");
+        int idMiembro = scanner.nextInt();
+        scanner.nextLine();
+
+        Miembro miembro = Miembro.buscarMiembroPorId(idMiembro, listaMiembros);
+
+        if (miembro == null) {
+            System.out.println("Miembro no encontrado.");
+            return;
+        }
+
+        List<Prestamo> historialPrestamos = miembro.getPrestamosActivos();
+
+        System.out.println("\n--- Historial de Préstamos para " + miembro.getNombre() + " ---");
+        if (historialPrestamos.isEmpty()) {
+            System.out.println("No hay préstamos registrados para este miembro.");
+        } else {
+            for (Prestamo prestamo : historialPrestamos) {
+                String fechaPrestamoFormateada = prestamo.getFechaPrestamo().format(FORMATTER);
+                String fechaDevolucion = prestamo.getFechaDevolucion() == null ? "No devuelto" :
+                        prestamo.getFechaDevolucion().format(FORMATTER);
+                System.out.println("Libro: " + prestamo.getLibro().getTitulo() +
+                        " - Fecha de Préstamo: " + fechaPrestamoFormateada +
+                        " - Fecha de Devolución: " + fechaDevolucion);
+            }
+        }
+    }
+
     public static void mostrarPrestamosActivos(Scanner scanner, List<Miembro> listaMiembros) {
         System.out.println("\n--- Mostrar Préstamos Activos ---");
         System.out.print("Ingrese el ID del miembro: ");
@@ -37,51 +66,32 @@ public class Prestamo {
 
         if (miembro != null) {
             for (Prestamo prestamo : miembro.getPrestamosActivos()) {
-                System.out.println("Libro: " + prestamo.getLibro().getTitulo() + 
-                                   " - Fecha de Préstamo: " + prestamo.getFechaPrestamo() +
-                                   " - Fecha de Devolución: " + prestamo.getFechaDevolucion());
+                String fechaPrestamoFormateada = prestamo.getFechaPrestamo().format(FORMATTER);
+                System.out.println("Libro: " + prestamo.getLibro().getTitulo() +
+                        " - Fecha de Préstamo: " + fechaPrestamoFormateada);
             }
         } else {
             System.out.println("Miembro no encontrado.");
         }
     }
 
-    // Getters y setters
     public Libro getLibro() {
         return libro;
-    }
-
-    public void setLibro(Libro libro) {
-        this.libro = libro;
     }
 
     public Miembro getMiembro() {
         return miembro;
     }
 
-    public void setMiembro(Miembro miembro) {
-        this.miembro = miembro;
-    }
-
-    public LocalDate getFechaPrestamo() {
+    public LocalDateTime getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(LocalDate fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo;
-    }
-
-    public LocalDate getFechaDevolucion() {
+    public LocalDateTime getFechaDevolucion() {
         return fechaDevolucion;
     }
 
-    public void setFechaDevolucion(LocalDate fechaDevolucion) {
+    public void setFechaDevolucion(LocalDateTime fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 }
-
-
-
-
-
-

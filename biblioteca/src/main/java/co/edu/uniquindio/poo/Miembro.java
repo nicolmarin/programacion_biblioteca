@@ -12,15 +12,19 @@ public class Miembro {
     public Miembro(String nombre, int idMiembro) {
         this.nombre = nombre;
         this.idMiembro = idMiembro;
-        this.prestamosActivos = new ArrayList<>(); 
+        this.prestamosActivos = new ArrayList<>();
     }
 
     public void agregarPrestamos(Prestamo prestamo) {
-        prestamosActivos.add(prestamo);
+        if (!prestamosActivos.contains(prestamo)) {
+            prestamosActivos.add(prestamo);
+        } else {
+            System.out.println("El préstamo ya existe para este miembro.");
+        }
     }
 
-    public void removerPrestamo(Prestamo prestamo) {
-        prestamosActivos.remove(prestamo);
+    public boolean removerPrestamo(Prestamo prestamo) {
+        return prestamosActivos.remove(prestamo); // Devuelve true si se eliminó
     }
 
     public static void agregarMiembro(Scanner scanner, List<Miembro> listaMiembros) {
@@ -30,6 +34,11 @@ public class Miembro {
         System.out.print("Ingrese el ID del miembro: ");
         int idMiembro = scanner.nextInt();
         scanner.nextLine();
+
+        if (idMiembro < 0 || nombre.isEmpty()) {
+            System.out.println("ID inválido o nombre vacío. Intente de nuevo.");
+            return;
+        }
 
         Miembro miembro = new Miembro(nombre, idMiembro);
         listaMiembros.add(miembro);
@@ -45,6 +54,12 @@ public class Miembro {
         return null; // Retorna null si no se encuentra el miembro
     }
 
+    @Override
+    public String toString() {
+        return "Miembro [Nombre=" + nombre + ", ID=" + idMiembro + "]";
+    }
+
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
@@ -69,4 +84,3 @@ public class Miembro {
         this.prestamosActivos = prestamosActivos;
     }
 }
-
