@@ -9,7 +9,11 @@ public class Prestamo {
     private Libro libro;
     private Miembro miembro;
     private LocalDate fechaPrestamo;
-    private LocalDate fechaDevolucion;
+    public LocalDate fechaDevolucion;
+    public List<Prestamo> prestamos;
+
+
+
 
     // Constructor que inicializa el préstamo con libro, miembro, fecha de préstamo y fecha de devolución
     public Prestamo(Libro libro, Miembro miembro, LocalDateTime fechaPrestamo, LocalDateTime fechaDevolucion) {

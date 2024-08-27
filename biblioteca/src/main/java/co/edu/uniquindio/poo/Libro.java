@@ -1,8 +1,10 @@
 package co.edu.uniquindio.poo;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class Libro extends ItemBiblioteca {
     private String autor;
@@ -86,10 +88,20 @@ public class Libro extends ItemBiblioteca {
         if (libro != null && "prestado".equals(libro.getEstado())) {
             libro.setEstado("disponible"); // Cambiar el estado a disponible
             System.out.println("Libro devuelto exitosamente: " + libro.getTitulo());
+           //System.out.println("Fecha de devolución: " + Prestamo.getfechaDevolucion());//
         } else {
             System.out.println("El libro ya está disponible o no se encontró.");
         }
     }
+    public static Prestamo buscarPrestamoPorLibro(Libro libro, List<Prestamo> listaPrestamos) {
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getLibro().equals(libro)) {
+                return prestamo;
+            }
+        }
+        return null; // Retorna null si no se encuentra el préstamo
+    }
+    
 
     public static Libro buscarLibroPorTitulo(String titulo, List<Libro> listaLibros) {
         for (Libro libro : listaLibros) {
