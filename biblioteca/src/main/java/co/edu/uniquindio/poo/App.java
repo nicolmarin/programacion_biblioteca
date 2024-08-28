@@ -42,7 +42,7 @@ public class App {
                     Libro.agregarLibro(scanner, listaLibros);
                     break;
                 case 3:
-                    Libro.prestarLibro(scanner, listaMiembros, listaLibros);
+                    Libro.prestarLibro(scanner, listaMiembros, listaLibros,listaPrestamos);
                     break;
                 case 4:
                     Libro.devolverLibro(scanner, listaLibros, listaPrestamos);
