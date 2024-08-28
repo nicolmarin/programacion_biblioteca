@@ -1,21 +1,27 @@
 package co.edu.uniquindio.poo;
 
+
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class Libro extends ItemBiblioteca {
     private String autor;
     private int isbn;
-    private String estado; // 
+    private String estado; // "disponible" o "prestado"
 
-    
+    // Constructor que inicializa el libro con su título, autor, ISBN y estado
     public Libro(String titulo, String autor, int isbn) {
         super(titulo); 
         this.autor = autor;
         this.isbn = isbn;
         this.estado = "disponible"; 
     }
+
+
 
     public static void agregarLibro(Scanner scanner, List<Libro> listaLibros) {
         System.out.println("\n--- Agregar Libro ---");
@@ -31,7 +37,6 @@ public class Libro extends ItemBiblioteca {
         listaLibros.add(libro);
         System.out.println("Libro agregado exitosamente: " + libro.getTitulo());
     }
-
     public static Libro buscarLibroPorIsbn(int isbn, List<Libro> listaLibros) {
         for (Libro libro : listaLibros) {
             if (libro.getIsbn() == isbn) {
@@ -41,11 +46,11 @@ public class Libro extends ItemBiblioteca {
         return null; 
     }
 
-    public static void prestarLibro(Scanner scanner, List<Miembro> listaMiembros, List<Libro> listaLibros) {
+    public static void prestarLibro(Scanner scanner, List<Miembro> listaMiembros, List<Libro> listaLibros, List<Prestamo> listaPrestamos) {
         System.out.println("\n--- Realizar Préstamo ---");
         System.out.print("Ingrese el ID del miembro: ");
         int idMiembro = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine(); // Limpiar el buffer de entrada
 
         Miembro miembro = Miembro.buscarMiembroPorId(idMiembro, listaMiembros);
 
@@ -75,7 +80,11 @@ public class Libro extends ItemBiblioteca {
         }
     }
 
-    public static void devolverLibro(Scanner scanner, List<Libro> listaLibros,List<Prestamo>listaPrestamos) {
+
+
+
+    // Método para devolver un libro
+    public static void devolverLibro(Scanner scanner, List<Libro> listaLibros, List<Prestamo> listaPrestamos) {
         System.out.println("\n--- Devolver Libro ---");
         System.out.print("Ingrese el ISBN del libro: ");
         int isbn = scanner.nextInt();
