@@ -39,7 +39,7 @@ public class Prestamo {
                 String fechaPrestamoFormateada = prestamo.getFechaPrestamo().format(FORMATTER);
                 String fechaDevolucion = prestamo.getFechaDevolucion() == null ? "No devuelto" :
                         prestamo.getFechaDevolucion().format(FORMATTER);
-                System.out.println("Libro: " + prestamo.getLibro().getTitulo() +
+                System.out.println("Nombre: "+miembro.getNombre()+" Libro: " + prestamo.getLibro().getTitulo() +
                         " - Fecha de Préstamo: " + fechaPrestamoFormateada +
                         " - Fecha de Devolución: " + fechaDevolucion);
             }
@@ -54,7 +54,7 @@ public class Prestamo {
         if (miembro != null) {
             for (Prestamo prestamo : miembro.getPrestamosActivos()) {
                 String fechaPrestamoFormateada = prestamo.getFechaPrestamo().format(FORMATTER);
-                System.out.println("Libro: " + prestamo.getLibro().getTitulo() +
+                System.out.println("Nombre: "+miembro.getNombre()+" Libro: " + prestamo.getLibro().getTitulo() +
                         " - Fecha de Préstamo: " + fechaPrestamoFormateada);
             }
         } else {

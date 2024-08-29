@@ -46,8 +46,6 @@ class Bibliotecario extends Empleado implements IGestionInventario {
             boolean libroEliminado = listaLibros.remove(libroARemover);
             if (libroEliminado) {
                 System.out.println("Ítem removido del inventario y de la lista de libros: " + libroARemover.getTitulo());
-            } else {
-                System.out.println("Ítem removido del inventario, pero no se encontró en la lista de libros.");
             }
         } else {
             System.out.println("Ítem no encontrado en el inventario del bibliotecario.");
