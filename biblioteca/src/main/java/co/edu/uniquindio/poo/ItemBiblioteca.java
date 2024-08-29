@@ -5,7 +5,6 @@ abstract class  ItemBiblioteca {
     public ItemBiblioteca(String titulo) {
         this.titulo = titulo;
     }
-
     public String getTitulo() {
         return titulo; 
     }

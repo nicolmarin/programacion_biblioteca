@@ -75,7 +75,6 @@ public class App {
             }
         }
     }
-
     public static void mostrarMenuGestionInventario() {
         boolean volver = false;
         while (!volver) {
@@ -85,7 +84,8 @@ public class App {
             System.out.println("║ \u001B[35m1.\u001B[0m Agregar Ítem al Inventario    ");
             System.out.println("║ \u001B[35m2.\u001B[0m Remover Ítem del Inventario  ");
             System.out.println("║ \u001B[35m3.\u001B[0m Mostrar Inventario           ");
-            System.out.println("║ \u001B[35m4.\u001B[0m Volver al menú principal      ");
+            System.out.println("║ \u001B[35m4.\u001B[0m Gestionar Ítems              ");
+            System.out.println("║ \u001B[35m5.\u001B[0m Volver al menú principal      ");
             System.out.println("╚═════════════════════════════════════════");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
@@ -101,6 +101,9 @@ public class App {
                     bibliotecario.mostrarInventario();
                     break;
                 case 4:
+                    bibliotecario.gestionarItem();
+                    break;
+                case 5:
                     volver = true;
                     break;
                 default:
@@ -109,7 +112,6 @@ public class App {
             }
         }
     }
-
     public static void inicializarDatos() {
         bibliotecario = new Bibliotecario("Pepito El letras", 18902345);
         Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri", 4589);
