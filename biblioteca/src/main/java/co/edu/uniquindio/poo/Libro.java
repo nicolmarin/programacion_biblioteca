@@ -1,8 +1,4 @@
 package co.edu.uniquindio.poo;
-
-
-
-//import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
@@ -11,14 +7,14 @@ import java.util.Scanner;
 public class Libro extends ItemBiblioteca {
     private String autor;
     private int isbn;
-    private String estado; // "disponible" o "prestado"
+    private String estado; 
 
-    // Constructor que inicializa el libro con su título, autor, ISBN y estado
+
     public Libro(String titulo, String autor, int isbn) {
         super(titulo);
         this.autor = autor;
         this.isbn = isbn;
-        this.estado = "disponible"; // Estado inicial del libro
+        this.estado = "disponible"; 
     }
 
 
@@ -30,7 +26,7 @@ public class Libro extends ItemBiblioteca {
         String autor = scanner.nextLine();
         System.out.print("Ingrese el ISBN del libro: ");
         int isbn = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer de entrada
+        scanner.nextLine(); 
 
         Libro libro = new Libro(titulo, autor, isbn);
         listaLibros.add(libro);
@@ -43,7 +39,7 @@ public class Libro extends ItemBiblioteca {
                 return libro;
             }
         }
-        return null; // Retorna null si el libro no se encuentra
+        return null; 
     }
 
    
@@ -102,7 +98,7 @@ public class Libro extends ItemBiblioteca {
                 return prestamo;
             }
         }
-        return null; // Retorna null si no se encuentra el préstamo
+        return null; 
     }
     public static Libro buscarLibroPorTitulo(String titulo, List<Libro> listaLibros) {
         for (Libro libro : listaLibros) {
@@ -110,13 +106,13 @@ public class Libro extends ItemBiblioteca {
                 return libro;
             }
         }
-        return null; // Retorna null si el libro no se encuentra
+        return null; 
     }
     public static void verificarDisponibilidadLibro(Scanner scanner, List<Libro> listaLibros) {
         System.out.println("\n--- Verificar Disponibilidad de Libro ---");
         System.out.print("Ingrese el ISBN del libro: ");
         int isbn = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer de entrada
+        scanner.nextLine(); 
         Libro libro = Libro.buscarLibroPorIsbn(isbn, listaLibros);
         if (libro != null) {
             if (libro.estaDisponible()) {
@@ -132,7 +128,7 @@ public class Libro extends ItemBiblioteca {
         System.out.println("\n--- Buscar Libro por ISBN ---");
         System.out.print("Ingrese el ISBN del libro: ");
         int isbn = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer de entrada
+        scanner.nextLine(); 
         Libro libro = Libro.buscarLibroPorIsbn(isbn, listaLibros);
         if (libro != null) {
             libro.mostrarDetalles();
@@ -155,11 +151,11 @@ public class Libro extends ItemBiblioteca {
     public void mostrarDetalles() {
         System.out.println("Libro: " + getTitulo() + ", Autor: " + autor + ", ISBN: " + isbn + ", Estado: " + estado);
     }
-     // Implementación del método abstracto para verificar disponibilidad
+     
     public boolean estaDisponible() {
         return "disponible".equals(estado);
     }
-    // Métodos getters y setters
+   
     public void setEstado(String estado) {
         this.estado = estado;
     }
