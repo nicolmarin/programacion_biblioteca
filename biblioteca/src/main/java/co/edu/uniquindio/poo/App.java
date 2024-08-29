@@ -51,7 +51,7 @@ public class App {
                     Prestamo.mostrarPrestamosActivos(scanner, listaMiembros);
                     break;
                 case 6:
-                    Prestamo.mostrarHistorialPrestamos(scanner, listaMiembros);
+                    Prestamo.mostrarHistorialPrestamos(scanner,listaMiembros);
                     break;
                 case 7:
                     Libro.verificarDisponibilidadLibro(scanner, listaLibros);
