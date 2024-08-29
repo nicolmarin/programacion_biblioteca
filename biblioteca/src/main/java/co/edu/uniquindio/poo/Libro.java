@@ -151,6 +151,10 @@ public class Libro extends ItemBiblioteca {
     public void mostrarDetalles() {
         System.out.println("Libro: " + getTitulo() + ", Autor: " + autor + ", ISBN: " + isbn + ", Estado: " + estado);
     }
+    @Override
+    public void mostrarItem() {
+        System.out.println("Item: " + getTitulo());
+    }
      
     public boolean estaDisponible() {
         return "disponible".equals(estado);

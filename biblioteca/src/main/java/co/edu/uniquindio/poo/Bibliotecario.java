@@ -72,7 +72,7 @@ class Bibliotecario extends Empleado implements IGestionInventario {
     public void mostrarInventario() {
         System.out.println("Inventario:");
         for (ItemBiblioteca item : inventario) {
-            item.mostrarDetalles();
+            item.mostrarItem();
         }
     }
 }

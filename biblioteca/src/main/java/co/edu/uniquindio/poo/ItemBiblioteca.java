@@ -9,6 +9,7 @@ abstract class  ItemBiblioteca {
         return titulo; 
     }
     public abstract void mostrarDetalles();
+    public abstract void mostrarItem();
 }
 
 
