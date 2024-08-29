@@ -1,8 +1,7 @@
 package co.edu.uniquindio.poo;
 
-abstract class ItemBiblioteca {
+abstract class  ItemBiblioteca {
     private String titulo;
-
     public ItemBiblioteca(String titulo) {
         this.titulo = titulo;
     }
@@ -10,12 +9,7 @@ abstract class ItemBiblioteca {
     public String getTitulo() {
         return titulo; 
     }
-
     public abstract void mostrarDetalles();
-
-    
 }
 
-
-    
 

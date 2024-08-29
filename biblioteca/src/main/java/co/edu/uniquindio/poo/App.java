@@ -15,23 +15,25 @@ public class App {
     public static void main(String[] args) {
         inicializarDatos();
         boolean salir = false;
-
         while (!salir) {
-            System.out.println("\n--- Sistema de Gestión de Biblioteca ---");
-            System.out.println("1. Agregar Miembro");
-            System.out.println("2. Agregar Libro");
-            System.out.println("3. Realizar Préstamo");
-            System.out.println("4. Devolver Libro");
-            System.out.println("5. Mostrar Préstamos Activos");
-            System.out.println("6. Mostrar Historial de Préstamos");
-            System.out.println("7. Verificar disponibilidad de libro ");
-            System.out.println("8. Buscar libro por ISBN ");
-            System.out.println("9. Buscar libro por título ");
-            System.out.println("10. Salir");
+            System.out.println("╔═════════════════════════════════════════");
+            System.out.println("║       📚 Menú Sistema de Biblioteca 📚   ");
+            System.out.println("╠═════════════════════════════════════════");
+            System.out.println("║ \u001B[35m1.\u001B[0m Agregar Miembro                ");
+            System.out.println("║ \u001B[35m2.\u001B[0m Agregar Libro                  ");
+            System.out.println("║ \u001B[35m3.\u001B[0m Realizar Préstamo              ");
+            System.out.println("║ \u001B[35m4.\u001B[0m Devolver Libro                ");
+            System.out.println("║ \u001B[35m5.\u001B[0m Mostrar Préstamos Activos      ");
+            System.out.println("║ \u001B[35m6.\u001B[0m Mostrar Historial de Préstamos ");
+            System.out.println("║ \u001B[35m7.\u001B[0m Verificar disponibilidad de libro ");
+            System.out.println("║ \u001B[35m8.\u001B[0m Buscar libro por ISBN           ");
+            System.out.println("║ \u001B[35m9.\u001B[0m Buscar libro por título         ");
+            System.out.println("║ \u001B[35m10.\u001B[0m Gestionar Inventario            ");
+            System.out.println("║ \u001B[35m11.\u001B[0m Salir                          ");
+            System.out.println("╚══════════════════════════════════════════");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine();
-
             switch (opcion) {
                 case 1:
                     Miembro.agregarMiembro(scanner, listaMiembros);
@@ -40,7 +42,7 @@ public class App {
                     Libro.agregarLibro(scanner, listaLibros);
                     break;
                 case 3:
-                    Libro.prestarLibro(scanner, listaMiembros, listaLibros, listaPrestamos);
+                    Libro.prestarLibro(scanner, listaMiembros, listaLibros,listaPrestamos);
                     break;
                 case 4:
                     Libro.devolverLibro(scanner, listaLibros, listaPrestamos);
@@ -61,6 +63,9 @@ public class App {
                     Libro.buscarLibroPorTitulo(scanner, listaLibros);
                     break;
                 case 10:
+                    mostrarMenuGestionInventario();
+                    break;
+                case 11:
                     salir = true;
                     System.out.println("Saliendo del sistema...");
                     break;
@@ -71,9 +76,42 @@ public class App {
         }
     }
 
+    public static void mostrarMenuGestionInventario() {
+        boolean volver = false;
+        while (!volver) {
+            System.out.println("╔═════════════════════════════════════════");
+            System.out.println("║    📦 Menú Gestión de Inventario 📦     ");
+            System.out.println("╠═════════════════════════════════════════");
+            System.out.println("║ \u001B[35m1.\u001B[0m Agregar Ítem al Inventario    ");
+            System.out.println("║ \u001B[35m2.\u001B[0m Remover Ítem del Inventario  ");
+            System.out.println("║ \u001B[35m3.\u001B[0m Mostrar Inventario           ");
+            System.out.println("║ \u001B[35m4.\u001B[0m Volver al menú principal      ");
+            System.out.println("╚═════════════════════════════════════════");
+            System.out.print("Seleccione una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcion) {
+                case 1:
+                    bibliotecario.agregarItem(scanner);
+                    break;
+                case 2:
+                    bibliotecario.removerItemConScanner(scanner, listaLibros);
+                    break;
+                case 3:
+                    bibliotecario.mostrarInventario();
+                    break;
+                case 4:
+                    volver = true;
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+                    break;
+            }
+        }
+    }
+
     public static void inicializarDatos() {
         bibliotecario = new Bibliotecario("Pepito El letras", 18902345);
-
         Libro libro1 = new Libro("La Divina Comedia", "Dante Alighieri", 4589);
         Libro libro2 = new Libro("Boulevard", "Flor M. Salvador", 89021);
         Libro libro3 = new Libro("Cien Años de Soledad", "Gabriel García Márquez", 12345);
@@ -84,7 +122,6 @@ public class App {
         Libro libro8 = new Libro("El Principito", "Antoine de Saint-Exupéry", 99887);
         Libro libro9 = new Libro("La Sombra del Viento", "Carlos Ruiz Zafón", 66554);
         Libro libro10 = new Libro("Ficciones", "Jorge Luis Borges", 54321);
-
         // Lista de Libros
         listaLibros.add(libro1);
         listaLibros.add(libro2);
@@ -96,14 +133,14 @@ public class App {
         listaLibros.add(libro8);
         listaLibros.add(libro9);
         listaLibros.add(libro10);
-
+        //Lista de instancias
         Miembro miembro1 = new Miembro("Duvan Felipe", 1);
         Miembro miembro2 = new Miembro("Nicol Marin", 2);
         Miembro miembro3 = new Miembro("Majo Tovar", 3);
-
         // Listado de Miembros
         listaMiembros.add(miembro1);
         listaMiembros.add(miembro2);
         listaMiembros.add(miembro3);
     }
 }
+
