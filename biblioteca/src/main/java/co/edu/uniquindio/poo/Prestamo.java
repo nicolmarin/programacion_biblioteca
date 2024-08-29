@@ -23,6 +23,10 @@ public class Prestamo {
         libro.setEstado("prestado");
         prestamosActivos.add(this); // Agregar el préstamo a la lista
     }
+    public void agregarPrestamos(Prestamo prestamo) {
+        prestamosActivos.add(prestamo);
+    }
+
 
     public static void mostrarHistorialPrestamos(Scanner scanner, List<Miembro> listaMiembros) {
         System.out.print("Ingrese el nombre del miembro para ver el historial de préstamos: ");
