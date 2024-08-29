@@ -74,7 +74,6 @@ public class Prestamo {
     }
 
 
-    // Getters y Setters
     public Libro getLibro() {
         return libro;
     }
