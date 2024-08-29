@@ -1,19 +1,16 @@
 package co.edu.uniquindio.poo;
-
-
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 
 public class Libro extends ItemBiblioteca {
     private String autor;
     private int isbn;
-    private String estado; // "disponible" o "prestado"
+    private String estado; 
 
-    // Constructor que inicializa el libro con su título, autor, ISBN y estado
+   
     public Libro(String titulo, String autor, int isbn) {
         super(titulo); 
         this.autor = autor;
@@ -50,7 +47,7 @@ public class Libro extends ItemBiblioteca {
         System.out.println("\n--- Realizar Préstamo ---");
         System.out.print("Ingrese el ID del miembro: ");
         int idMiembro = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer de entrada
+        scanner.nextLine(); 
 
         Miembro miembro = Miembro.buscarMiembroPorId(idMiembro, listaMiembros);
 
@@ -83,7 +80,7 @@ public class Libro extends ItemBiblioteca {
 
 
 
-    // Método para devolver un libro
+    
     public static void devolverLibro(Scanner scanner, List<Libro> listaLibros, List<Prestamo> listaPrestamos) {
         System.out.println("\n--- Devolver Libro ---");
         System.out.print("Ingrese el ISBN del libro: ");
@@ -113,7 +110,7 @@ public class Libro extends ItemBiblioteca {
         System.out.println("\n--- Verificar Disponibilidad de Libro ---");
         System.out.print("Ingrese el ISBN del libro: ");
         int isbn = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer de entrada
+        scanner.nextLine(); 
     
         Libro libro = Libro.buscarLibroPorIsbn(isbn, listaLibros);
     
@@ -132,7 +129,7 @@ public class Libro extends ItemBiblioteca {
         System.out.println("\n--- Buscar Libro por ISBN ---");
         System.out.print("Ingrese el ISBN del libro: ");
         int isbn = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer de entrada
+        scanner.nextLine(); 
     
         Libro libro = Libro.buscarLibroPorIsbn(isbn, listaLibros);
     
@@ -161,13 +158,14 @@ public class Libro extends ItemBiblioteca {
     public void mostrarDetalles() {
         System.out.println("Libro: " + getTitulo() + ", Autor: " + autor + ", ISBN: " + isbn + ", Estado: " + estado);
     }
-     // Implementación del método abstracto para verificar disponibilidad
+  
+     
     
     public boolean estaDisponible() {
         return "disponible".equals(estado);
     }
 
-    // Métodos getters y setters
+    
     public void setEstado(String estado) {
         this.estado = estado;
     }

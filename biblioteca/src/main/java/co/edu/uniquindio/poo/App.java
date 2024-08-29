@@ -92,33 +92,10 @@ public class App {
             scanner.nextLine();
             switch (opcion) {
                 case 1:
-                    System.out.print("Ingrese el título del ítem: ");
-                    String titulo = scanner.nextLine();
-                    System.out.print("Ingrese el autor del ítem: ");
-                    String autor = scanner.nextLine();
-                    System.out.print("Ingrese el ISBN del ítem: ");
-                    int isbn = scanner.nextInt();
-                    scanner.nextLine();
-                    Libro nuevoLibro = new Libro(titulo, autor, isbn);
-                    bibliotecario.agregarItem(nuevoLibro);
+                    bibliotecario.agregarItem(scanner);
                     break;
                 case 2:
-                    System.out.print("Ingrese el ISBN del ítem a remover: ");
-                    int isbnRemover = scanner.nextInt();
-                    scanner.nextLine();
-                    Libro libroARemover = null;
-                    for (Libro libro : listaLibros) {
-                        if (libro.getIsbn() == isbnRemover) {
-                            libroARemover = libro;
-                            break;
-                        }
-                    }
-                    if (libroARemover != null) {
-                        bibliotecario.removerItem(libroARemover);
-                        listaLibros.remove(libroARemover);
-                    } else {
-                        System.out.println("Ítem no encontrado en el inventario.");
-                    }
+                    bibliotecario.removerItemConScanner(scanner, listaLibros);
                     break;
                 case 3:
                     bibliotecario.mostrarInventario();
