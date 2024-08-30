@@ -42,13 +42,13 @@ public class App {
                     Libro.prestarLibro(scanner, listaMiembros, listaLibros, listaPrestamos);
                     break;
                 case 4:
-                    Libro.devolverLibro(scanner, listaLibros, listaPrestamos, historialPrestamos);
+                    Libro.devolverLibro(scanner, listaLibros, listaPrestamos);
                     break;
                 case 5:
-                    Prestamo.mostrarPrestamosActivos(scanner, listaPrestamos);
+                    Prestamo.mostrarPrestamosActivos();
                     break;
                 case 6:
-                    Prestamo.mostrarHistorialPrestamos(scanner, listaPrestamos);
+                    Prestamo.mostrarHistorialPrestamos();
                     break;
                 case 7:
                     Libro.verificarDisponibilidadLibro(scanner, listaLibros);

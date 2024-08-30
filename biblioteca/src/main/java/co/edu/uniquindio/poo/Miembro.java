@@ -1,19 +1,12 @@
 package co.edu.uniquindio.poo;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 public class Miembro {
     private String nombre;
     private int id;
-    private List<Prestamo> prestamosActivos;
-    private List<Prestamo> historialPrestamos;
     public Miembro(String nombre, int id) {
         this.nombre = nombre;
         this.id = id;
-        this.prestamosActivos = new ArrayList<>();
-        this.historialPrestamos = new ArrayList<>();
     }
     public static void agregarMiembro(Scanner scanner, List<Miembro> listaMiembros) {
         System.out.println("\n--- Agregar Miembro ---");
@@ -34,7 +27,7 @@ public class Miembro {
         }
         return null;
     }
-    // Getters
+    // ------------- Getters ----------------
     public String getNombre() {
         return nombre;
     }

@@ -12,7 +12,7 @@ public class Libro extends ItemBiblioteca {
         this.isbn = isbn;
         this.estado = "disponible";
     }
-    public static void devolverLibro(Scanner scanner, List<Libro> listaLibros, List<Prestamo> listaPrestamos, List<Prestamo> historialPrestamos) {
+    public static void devolverLibro(Scanner scanner, List<Libro> listaLibros, List<Prestamo> listaPrestamos) {
         System.out.print("Ingrese el ISBN del libro que desea devolver: ");
         int isbn = scanner.nextInt();
         scanner.nextLine();
@@ -24,15 +24,66 @@ public class Libro extends ItemBiblioteca {
         Prestamo prestamoEncontrado = buscarPrestamoPorLibro(libroEncontrado, listaPrestamos);
         if (prestamoEncontrado != null) {
             prestamoEncontrado.setFechaDevolucion(LocalDateTime.now());
-            libroEncontrado.setEstado("disponible");
-            prestamoEncontrado.setEstado("devuelto");
-            historialPrestamos.add(prestamoEncontrado);
-            listaPrestamos.remove(prestamoEncontrado);
-
             System.out.println("El libro ha sido devuelto exitosamente.");
         } else {
             System.out.println("No hay un préstamo activo para este libro.");
         }
+    }
+
+    public static void agregarLibro(Scanner scanner, List<Libro> listaLibros) {
+        System.out.println("\n--- Agregar Libro ---");
+        System.out.print("Ingrese el título del libro: ");
+        String titulo = scanner.nextLine();
+        System.out.print("Ingrese el autor del libro: ");
+        String autor = scanner.nextLine();
+        System.out.print("Ingrese el ISBN del libro: ");
+        int isbn = scanner.nextInt();
+        scanner.nextLine();
+        Libro libro = new Libro(titulo, autor, isbn);
+        listaLibros.add(libro);
+        System.out.println("Libro agregado exitosamente: " + libro.getTitulo());
+    }
+    public static void prestarLibro(Scanner scanner, List<Miembro> listaMiembros, List<Libro> listaLibros, List<Prestamo> listaPrestamos) {
+        System.out.println("\n--- Prestar Libro ---");
+        System.out.print("Ingrese el ID del miembro: ");
+        int idMiembro = scanner.nextInt();
+        scanner.nextLine();
+        Miembro miembro = Miembro.buscarMiembroPorId(idMiembro, listaMiembros);
+        if (miembro == null) {
+            System.out.println("Miembro no encontrado.");
+            return;
+        }
+        Libro libro = buscarLibroPorIsbn(scanner, listaLibros);
+        if (libro != null && libro.estaDisponible()) {
+            Prestamo prestamo = new Prestamo(libro, miembro);
+            listaPrestamos.add(prestamo); // Agregar el préstamo a la lista
+            libro.setEstado("no disponible"); // Cambiar el estado del libro
+            System.out.println("Libro prestado exitosamente: " + libro.getTitulo());
+        } else {
+            System.out.println("El libro no está disponible o no se encontró.");
+        }
+    }
+    public static void verificarDisponibilidadLibro(Scanner scanner, List<Libro> listaLibros) {
+        System.out.println("\n--- Verificar Disponibilidad del Libro ---");
+        Libro libro = buscarLibroPorIsbn(scanner, listaLibros);
+
+        if (libro != null) {
+            System.out.println("El libro " + libro.getTitulo() + " está: " + libro.getEstado() + ".");
+        }
+    }
+    //---------------------- Buscar ---------------------
+    public static Libro buscarLibroPorTitulo(Scanner scanner, List<Libro> listaLibros) {
+        System.out.println("\n--- Buscar Libro por Título ---");
+        System.out.print("Ingrese el título del libro: ");
+        String titulo = scanner.nextLine();
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                libro.mostrarDetalles();
+                return libro;
+            }
+        }
+        System.out.println("Libro no encontrado.");
+        return null;
     }
     private static Prestamo buscarPrestamoPorLibro(Libro libro, List<Prestamo> listaPrestamos) {
         for (Prestamo prestamo : listaPrestamos) {
@@ -63,62 +114,7 @@ public class Libro extends ItemBiblioteca {
         System.out.println("Libro no encontrado.");
         return null;
     }
-    public static void agregarLibro(Scanner scanner, List<Libro> listaLibros) {
-        System.out.println("\n--- Agregar Libro ---");
-        System.out.print("Ingrese el título del libro: ");
-        String titulo = scanner.nextLine();
-        System.out.print("Ingrese el autor del libro: ");
-        String autor = scanner.nextLine();
-        System.out.print("Ingrese el ISBN del libro: ");
-        int isbn = scanner.nextInt();
-        scanner.nextLine();  // Limpiar buffer
-
-        Libro libro = new Libro(titulo, autor, isbn);
-        listaLibros.add(libro);
-        System.out.println("Libro agregado exitosamente: " + libro.getTitulo());
-    }
-    public static void prestarLibro(Scanner scanner, List<Miembro> listaMiembros, List<Libro> listaLibros, List<Prestamo> listaPrestamos) {
-        System.out.println("\n--- Prestar Libro ---");
-        System.out.print("Ingrese el ID del miembro: ");
-        int idMiembro = scanner.nextInt();
-        scanner.nextLine();
-        Miembro miembro = Miembro.buscarMiembroPorId(idMiembro, listaMiembros);
-        if (miembro == null) {
-            System.out.println("Miembro no encontrado.");
-            return;
-        }
-        Libro libro = buscarLibroPorIsbn(scanner, listaLibros);
-        if (libro != null && libro.estaDisponible()) {
-            Prestamo prestamo = new Prestamo(libro, miembro);
-            listaPrestamos.add(prestamo); // Agregar el préstamo a la lista
-            libro.setEstado("no disponible"); // Cambiar el estado del libro
-            System.out.println("Libro prestado exitosamente: " + libro.getTitulo());
-        } else {
-            System.out.println("El libro no está disponible o no se encontró.");
-        }
-    }
-    public static void verificarDisponibilidadLibro(Scanner scanner, List<Libro> listaLibros) {
-        System.out.println("\n--- Verificar Disponibilidad del Libro ---");
-        Libro libro = buscarLibroPorIsbn(scanner, listaLibros);
-
-        if (libro != null) {
-            System.out.println("El libro " + libro.getTitulo() + " está " + libro.getEstado() + ".");
-        }
-    }
-    public static Libro buscarLibroPorTitulo(Scanner scanner, List<Libro> listaLibros) {
-        System.out.println("\n--- Buscar Libro por Título ---");
-        System.out.print("Ingrese el título del libro: ");
-        String titulo = scanner.nextLine();
-        for (Libro libro : listaLibros) {
-            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
-                libro.mostrarDetalles();
-                return libro;
-            }
-        }
-        System.out.println("Libro no encontrado.");
-        return null;
-    }
-    // Getters
+    // ----------- Getters ----------------
     public int getIsbn() {
         return isbn;
     }
