@@ -4,8 +4,8 @@ public abstract class Empleado  {
     private String nombre;
     private int idEmpleado;
     public Empleado(String nombre,int idEmpleado){
-        this.nombre=nombre;
-        this.idEmpleado=idEmpleado;
+        this.nombre = nombre;
+        this.idEmpleado = idEmpleado;
         
     }
     public String getNombre() {

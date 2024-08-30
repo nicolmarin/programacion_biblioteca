@@ -1,18 +1,14 @@
 package co.edu.uniquindio.poo;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 public class App {
-
     private final static List<Miembro> listaMiembros = new ArrayList<>();
     private final static List<Libro> listaLibros = new ArrayList<>();
     private final static List<Prestamo> listaPrestamos = new ArrayList<>();
     private final static List<Prestamo> historialPrestamos = new ArrayList<>(); // Agregado historial de préstamos
     private final static Scanner scanner = new Scanner(System.in);
     private static Bibliotecario bibliotecario;
-
     public static void main(String[] args) {
         inicializarDatos();
         boolean salir = false;

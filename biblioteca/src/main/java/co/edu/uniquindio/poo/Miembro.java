@@ -36,17 +36,12 @@ public class Miembro {
                 return miembro;
             }
         }
-        return null; // Devuelve null si no se encuentra el miembro
+        return null;
     }
-
-
-
-
     // Getters
     public String getNombre() {
         return nombre;
     }
-
     public int getId() {
         return id;
     }

@@ -31,7 +31,6 @@ class Bibliotecario extends Empleado implements IGestionInventario {
         System.out.print("Ingrese el ISBN del ítem a remover: ");
         int isbnRemover = scanner.nextInt();
         scanner.nextLine();
-        // Buscar el ítem en el inventario del bibliotecario
         Libro libroARemover = null;
         for (ItemBiblioteca item : inventario) {
             if (item instanceof Libro && ((Libro) item).getIsbn() == isbnRemover) {
@@ -40,10 +39,7 @@ class Bibliotecario extends Empleado implements IGestionInventario {
             }
         }
         if (libroARemover != null) {
-            // Remover del inventario del bibliotecario
             removerItem(libroARemover);
-
-            // También eliminar de la lista de libros
             boolean libroEliminado = listaLibros.remove(libroARemover);
             if (libroEliminado) {
                 System.out.println("Ítem removido del inventario y de la lista de libros: " + libroARemover.getTitulo());
