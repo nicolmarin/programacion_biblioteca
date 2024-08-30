@@ -10,6 +10,9 @@ abstract class  ItemBiblioteca {
     }
     public abstract void mostrarDetalles();
     public abstract void mostrarItem();
+    public abstract void mostrarArchivo();
+
+
 }
 
 

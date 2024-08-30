@@ -77,7 +77,6 @@ public class Libro extends ItemBiblioteca {
         String titulo = scanner.nextLine();
         for (Libro libro : listaLibros) {
             if (libro.getTitulo().equalsIgnoreCase(titulo)) {
-                libro.mostrarDetalles();
                 return libro;
             }
         }
@@ -157,8 +156,16 @@ public class Libro extends ItemBiblioteca {
         System.out.println("ISBN: " + isbn);
         System.out.println("Estado: " + estado);
     }
+
     @Override
-    public void mostrarItem() {
-        System.out.println("Item: " + getTitulo());
+    public void mostrarItem(){
+        System.out.println("Item: "+getTitulo());
     }
+
+    @Override
+    public void mostrarArchivo() {
+        System.out.println("Item: " + getTitulo() +" Autor: " + autor +" ISBN: " + isbn+" \u001BEstado\u001B : " + estado);
+    }
+
+
 }

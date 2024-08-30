@@ -51,7 +51,9 @@ class Bibliotecario extends Empleado implements IGestionInventario {
     @Override
     public void gestionarItem() {
         System.out.println("\n--- Gestión de Ítems ---");
-        mostrarInventario();
+        for (ItemBiblioteca item : inventario) {
+            item.mostrarArchivo();
+        }
         System.out.println("Puede agregar o remover ítems del inventario.");
     }
     @Override
@@ -71,4 +73,5 @@ class Bibliotecario extends Empleado implements IGestionInventario {
             item.mostrarItem();
         }
     }
+
 }
