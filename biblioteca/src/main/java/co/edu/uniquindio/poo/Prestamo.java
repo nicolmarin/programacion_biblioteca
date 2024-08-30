@@ -42,10 +42,10 @@ public class Prestamo {
         System.out.println("║             📚 Préstamos Activos 📚          ");
         System.out.println("╠══════════════════════════════════════════════");
         for (Prestamo prestamo : prestamosActivos) {
-            System.out.println("Título: " + prestamo.getLibro().getTitulo());
-            System.out.println("Miembro: " + prestamo.getMiembro().getNombre());
-            System.out.println("Fecha de Préstamo: " + prestamo.getFechaPrestamo().format(FORMATTER));
-            System.out.println("Estado: " + prestamo.estado);
+            System.out.println("║ Título: " + prestamo.getLibro().getTitulo());
+            System.out.println("║ Miembro: " + prestamo.getMiembro().getNombre());
+            System.out.println("║ Fecha de Préstamo: " + prestamo.getFechaPrestamo().format(FORMATTER));
+            System.out.println("║ Estado: " + prestamo.estado);
             System.out.println("╚══════════════════════════════════════════════");
         }
     }
@@ -58,15 +58,15 @@ public class Prestamo {
         System.out.println("║            📚 Historial de Préstamos 📚     ");
         System.out.println("╠══════════════════════════════════════════════");
         for (Prestamo prestamo : historialPrestamos) {
-            System.out.println("Título: " + prestamo.getLibro().getTitulo());
-            System.out.println("Miembro: " + prestamo.getMiembro().getNombre());
-            System.out.println("Fecha de Préstamo: " + prestamo.getFechaPrestamo().format(FORMATTER));
-            System.out.println("Fecha de Devolución: " +
+            System.out.println("║ Título: " + prestamo.getLibro().getTitulo());
+            System.out.println("║ Miembro: " + prestamo.getMiembro().getNombre());
+            System.out.println("║ Fecha de Préstamo: " + prestamo.getFechaPrestamo().format(FORMATTER));
+            System.out.println("║ Fecha de Devolución: " +
                     (prestamo.getFechaDevolucion() != null ? prestamo.getFechaDevolucion().format(FORMATTER) : "No devuelto"));
             System.out.println("╚══════════════════════════════════════════════");
         }
     }
-    // Getters
+    // ------------- Getters -------------
     public Libro getLibro() {
         return libro;
     }

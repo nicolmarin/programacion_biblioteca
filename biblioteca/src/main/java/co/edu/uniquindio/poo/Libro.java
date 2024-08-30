@@ -29,7 +29,6 @@ public class Libro extends ItemBiblioteca {
             System.out.println("No hay un préstamo activo para este libro.");
         }
     }
-
     public static void agregarLibro(Scanner scanner, List<Libro> listaLibros) {
         System.out.println("\n--- Agregar Libro ---");
         System.out.print("Ingrese el título del libro: ");
@@ -85,6 +84,16 @@ public class Libro extends ItemBiblioteca {
         System.out.println("Libro no encontrado.");
         return null;
     }
+    public static void mostrarLibroPorTitulo(Scanner scanner, List<Libro> listaLibros) {
+        Libro libroEncontrado = buscarLibroPorTitulo(scanner, listaLibros);
+        if (libroEncontrado != null) {
+            System.out.println("Detalles del libro:");
+            libroEncontrado.mostrarDetalles();
+        } else {
+            System.out.println("No se encontró el libro con ese título.");
+        }
+    }
+
     private static Prestamo buscarPrestamoPorLibro(Libro libro, List<Prestamo> listaPrestamos) {
         for (Prestamo prestamo : listaPrestamos) {
             if (prestamo.getLibro().equals(libro) && prestamo.getFechaDevolucion() == null) {
@@ -114,6 +123,20 @@ public class Libro extends ItemBiblioteca {
         System.out.println("Libro no encontrado.");
         return null;
     }
+
+    public static void buscarYMostrarLibroPorIsbn(Scanner scanner, List<Libro> listaLibros) {
+        System.out.print("Ingrese el ISBN del libro a buscar: ");
+        int isbn = scanner.nextInt();
+        scanner.nextLine();
+        Libro libroEncontrado = buscarLibroPorIsbn(isbn, listaLibros);
+        if (libroEncontrado != null) {
+            System.out.println("Libro encontrado:");
+            libroEncontrado.mostrarDetalles();
+        } else {
+            System.out.println("No se encontró un libro con ese ISBN.");
+        }
+    }
+
     // ----------- Getters ----------------
     public int getIsbn() {
         return isbn;

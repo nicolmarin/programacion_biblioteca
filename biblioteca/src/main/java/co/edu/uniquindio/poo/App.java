@@ -54,10 +54,10 @@ public class App {
                     Libro.verificarDisponibilidadLibro(scanner, listaLibros);
                     break;
                 case 8:
-                    Libro.buscarLibroPorIsbn(scanner, listaLibros);
+                    Libro.buscarYMostrarLibroPorIsbn(scanner,listaLibros);
                     break;
                 case 9:
-                    Libro.buscarLibroPorTitulo(scanner, listaLibros);
+                    Libro.mostrarLibroPorTitulo(scanner, listaLibros);
                     break;
                 case 10:
                     mostrarMenuGestionInventario();
