@@ -6,21 +6,15 @@ import java.util.Scanner;
 
 public class Miembro {
     private String nombre;
-    private int idMiembro;
+    private int id;
     private List<Prestamo> prestamosActivos;
+    private List<Prestamo> historialPrestamos;
 
-    public Miembro(String nombre, int idMiembro) {
+    public Miembro(String nombre, int id) {
         this.nombre = nombre;
-        this.idMiembro = idMiembro;
-        this.prestamosActivos = new ArrayList<>(); 
-    }
-
-    public void agregarPrestamos(Prestamo prestamo) {
-        prestamosActivos.add(prestamo);
-    }
-
-    public void removerPrestamo(Prestamo prestamo) {
-        prestamosActivos.remove(prestamo);
+        this.id = id;
+        this.prestamosActivos = new ArrayList<>();
+        this.historialPrestamos = new ArrayList<>();
     }
 
     public static void agregarMiembro(Scanner scanner, List<Miembro> listaMiembros) {
@@ -28,45 +22,32 @@ public class Miembro {
         System.out.print("Ingrese el nombre del miembro: ");
         String nombre = scanner.nextLine();
         System.out.print("Ingrese el ID del miembro: ");
-        int idMiembro = scanner.nextInt();
-        scanner.nextLine();
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpiar buffer
 
-        Miembro miembro = new Miembro(nombre, idMiembro);
+        Miembro miembro = new Miembro(nombre, id);
         listaMiembros.add(miembro);
         System.out.println("Miembro agregado exitosamente: " + miembro.getNombre());
     }
 
-    public static Miembro buscarMiembroPorId(int idMiembro, List<Miembro> listaMiembros) {
+    public static Miembro buscarMiembroPorId(int id, List<Miembro> listaMiembros) {
         for (Miembro miembro : listaMiembros) {
-            if (miembro.getIdMiembro() == idMiembro) {
+            if (miembro.getId() == id) {
                 return miembro;
             }
         }
-        return null; 
+        return null; // Devuelve null si no se encuentra el miembro
     }
 
+
+
+
+    // Getters
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getIdMiembro() {
-        return idMiembro;
-    }
-
-    public void setIdMiembro(int idMiembro) {
-        this.idMiembro = idMiembro;
-    }
-
-    public List<Prestamo> getPrestamosActivos() {
-        return prestamosActivos;
-    }
-
-    public void setPrestamosActivos(List<Prestamo> prestamosActivos) {
-        this.prestamosActivos = prestamosActivos;
+    public int getId() {
+        return id;
     }
 }
-

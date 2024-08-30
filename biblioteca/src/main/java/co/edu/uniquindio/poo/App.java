@@ -9,6 +9,7 @@ public class App {
     private final static List<Miembro> listaMiembros = new ArrayList<>();
     private final static List<Libro> listaLibros = new ArrayList<>();
     private final static List<Prestamo> listaPrestamos = new ArrayList<>();
+    private final static List<Prestamo> historialPrestamos = new ArrayList<>(); // Agregado historial de préstamos
     private final static Scanner scanner = new Scanner(System.in);
     private static Bibliotecario bibliotecario;
 
@@ -42,16 +43,16 @@ public class App {
                     Libro.agregarLibro(scanner, listaLibros);
                     break;
                 case 3:
-                    Libro.prestarLibro(scanner, listaMiembros, listaLibros,listaPrestamos);
+                    Libro.prestarLibro(scanner, listaMiembros, listaLibros, listaPrestamos);
                     break;
                 case 4:
-                    Libro.devolverLibro(scanner, listaLibros, listaPrestamos);
+                    Libro.devolverLibro(scanner, listaLibros, listaPrestamos, historialPrestamos);
                     break;
                 case 5:
-                    Prestamo.mostrarPrestamosActivos(scanner, listaMiembros);
+                    Prestamo.mostrarPrestamosActivos(scanner, listaPrestamos);
                     break;
                 case 6:
-                    Prestamo.mostrarHistorialPrestamos(scanner,listaMiembros);
+                    Prestamo.mostrarHistorialPrestamos(scanner, listaPrestamos);
                     break;
                 case 7:
                     Libro.verificarDisponibilidadLibro(scanner, listaLibros);
