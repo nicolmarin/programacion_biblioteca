@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
-abstract class  ItemBiblioteca {
+public abstract class  ItemBiblioteca {
     private String titulo;
     public ItemBiblioteca(String titulo) {
         this.titulo = titulo;

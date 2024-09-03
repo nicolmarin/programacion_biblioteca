@@ -3,7 +3,9 @@ package co.edu.uniquindio.poo.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-class Bibliotecario extends Empleado implements IGestionInventario {
+import co.edu.uniquindio.poo.services.IGestionInventario;;
+
+public class Bibliotecario extends Empleado implements IGestionInventario {
     public List<ItemBiblioteca> inventario = new ArrayList<>();
     public Bibliotecario(String nombre, int idEmpleado) {
         super(nombre, idEmpleado);
