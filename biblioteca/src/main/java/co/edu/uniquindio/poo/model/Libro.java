@@ -1,4 +1,5 @@
-package co.edu.uniquindio.poo;
+package co.edu.uniquindio.poo.model;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
